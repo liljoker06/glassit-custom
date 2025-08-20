@@ -3,7 +3,7 @@
   "displayName": "GlassIt Custom",
   "publisher": "liljoker06",
   "description": "Set the transparency of VS Code windows with GlassItApp",
-  "version": "0.0.1",
+  "version": "1.0.1",
   "engines": {
     "vscode": "^1.103.0"
   },
