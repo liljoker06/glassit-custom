@@ -3,7 +3,7 @@
   "displayName": "GlassIt Custom",
   "publisher": "liljoker06",
   "description": "Set the transparency of VS Code windows with GlassItApp",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "engines": {
     "vscode": "^1.103.0"
   },
@@ -11,6 +11,7 @@
     "Other"
   ],
   "activationEvents": [
+    "onStartupFinished",
     "onCommand:glassit-custom.start",
     "onCommand:glassit-custom.increase",
     "onCommand:glassit-custom.decrease",
@@ -49,7 +50,20 @@
         "command": "glassit-custom.reset",
         "key": "ctrl+alt+0"
       }
-    ]
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "GlassIt Custom Configuration",
+      "properties": {
+        "glassit-custom.opacity": {
+          "type": "number",
+          "default": 230,
+          "minimum": 100,
+          "maximum": 255,
+          "description": "Default window opacity (100 = transparent, 255 = opaque)"
+        }
+      }
+    }
   },
   "scripts": {
     "lint": "eslint .",
