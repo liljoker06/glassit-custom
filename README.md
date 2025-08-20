@@ -18,6 +18,12 @@ You will also see notifications showing the current transparency level in Englis
 
 ## 🚀 Installation
 
+### From Marketplace
+
+You can now install GlassIt Custom directly from the Visual Studio Code Marketplace:
+
+👉 [Install from Marketplace](https://marketplace.visualstudio.com/items?itemName=liljoker06.glassit-custom)
+
 ### From VSIX (Local Install)
 
 1. Clone or download this repository.
@@ -33,10 +39,6 @@ You will also see notifications showing the current transparency level in Englis
    ```bash
    code --install-extension glassit-custom-x.x.x.vsix
    ```
-
-### From Marketplace (soon)
-
-Once published, you will be able to install directly from the VS Code Marketplace.
 
 ---
 
@@ -72,7 +74,7 @@ To test in VS Code:
 * [ ] Linux support (planned)
 * [ ] macOS support (planned)
 * [ ] Configurable default transparency
-* [ ] Marketplace release
+* [x] Marketplace release ✅
 
 ---
 
