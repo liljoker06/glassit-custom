@@ -17,16 +17,16 @@ function getOpacityPercent() {
     return Math.round((currentOpacity / 255) * 100);
 }
 
-// Sauvegarder la transparence dans settings.json
+// Sauvegarder la transparence dans settings.json (global)
 async function saveOpacity(value) {
     const config = vscode.workspace.getConfiguration('glassit-custom');
     await config.update('opacity', value, vscode.ConfigurationTarget.Global);
 }
 
-// Charger la transparence depuis settings.json
+// Charger la transparence depuis settings.json (forcer la lecture globale)
 function loadOpacity() {
-    const config = vscode.workspace.getConfiguration('glassit-custom');
-    return config.get('opacity', 230); // valeur par défaut si rien n'est sauvegardé
+    const globalConfig = vscode.workspace.getConfiguration(undefined, null);
+    return globalConfig.get('glassit-custom.opacity', 230);
 }
 
 function activate(context) {
@@ -38,7 +38,7 @@ function activate(context) {
     // Appliquer la transparence au démarrage
     runGlassIt(currentOpacity);
 
-    // Commande de test
+    // Commande hello (test)
     let helloCmd = vscode.commands.registerCommand('glassit-custom.helloWorld', () => {
         vscode.window.showInformationMessage('Hello from GlassIt Custom 👋');
     });
@@ -49,27 +49,27 @@ function activate(context) {
         vscode.window.showInformationMessage(`GlassItApp started - Transparency: ${getOpacityPercent()}%`);
     });
 
-    // Augmenter la transparence
+    // Augmenter la transparence (plus clair)
     let increaseCmd = vscode.commands.registerCommand('glassit-custom.increase', async () => {
-        if (currentOpacity > 100) {
-            currentOpacity -= 10;
-            runGlassIt(currentOpacity);
-            await saveOpacity(currentOpacity);
-            vscode.window.showInformationMessage(`Transparency increased 🔼 (${getOpacityPercent()}%)`);
-        } else {
-            vscode.window.showWarningMessage("Already at maximum transparency!");
-        }
-    });
-
-    // Diminuer la transparence
-    let decreaseCmd = vscode.commands.registerCommand('glassit-custom.decrease', async () => {
         if (currentOpacity < 255) {
-            currentOpacity += 10;
+            currentOpacity += 10; // 🔧 corrigé : augmente la valeur = plus opaque
             runGlassIt(currentOpacity);
             await saveOpacity(currentOpacity);
             vscode.window.showInformationMessage(`Transparency decreased 🔽 (${getOpacityPercent()}%)`);
         } else {
             vscode.window.showWarningMessage("Already fully opaque!");
+        }
+    });
+
+    // Diminuer la transparence (plus transparent)
+    let decreaseCmd = vscode.commands.registerCommand('glassit-custom.decrease', async () => {
+        if (currentOpacity > 100) {
+            currentOpacity -= 10; // 🔧 corrigé : diminue la valeur = plus transparent
+            runGlassIt(currentOpacity);
+            await saveOpacity(currentOpacity);
+            vscode.window.showInformationMessage(`Transparency increased 🔼 (${getOpacityPercent()}%)`);
+        } else {
+            vscode.window.showWarningMessage("Already at maximum transparency!");
         }
     });
 
