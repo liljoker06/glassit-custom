@@ -1,0 +1,67 @@
+{
+  "name": "glassit-custom",
+  "displayName": "GlassIt Custom",
+  "publisher": "liljoker06",
+  "description": "Set the transparency of VS Code windows with GlassItApp",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.103.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:glassit-custom.start",
+    "onCommand:glassit-custom.increase",
+    "onCommand:glassit-custom.decrease",
+    "onCommand:glassit-custom.reset"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "glassit-custom.start",
+        "title": "GlassIt: Start"
+      },
+      {
+        "command": "glassit-custom.increase",
+        "title": "GlassIt: Increase Transparency"
+      },
+      {
+        "command": "glassit-custom.decrease",
+        "title": "GlassIt: Decrease Transparency"
+      },
+      {
+        "command": "glassit-custom.reset",
+        "title": "GlassIt: Reset Transparency"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "glassit-custom.increase",
+        "key": "ctrl+alt+up"
+      },
+      {
+        "command": "glassit-custom.decrease",
+        "key": "ctrl+alt+down"
+      },
+      {
+        "command": "glassit-custom.reset",
+        "key": "ctrl+alt+0"
+      }
+    ]
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.103.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "eslint": "^9.32.0",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}
